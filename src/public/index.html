@@ -6,8 +6,21 @@
         <title>Gartic Clone</title>
         <link rel="stylesheet" href="style.css" />
         <script src="script.js"></script>
+        <script src="socket.io/socket.io.js"></script>
     </head>
     <body>
         <canvas id="screen"> </canvas>
+        <button onclick="enviar()"></button>
+        <script>
+            const socket = io.connect();
+
+            socket.on("resposta", () => {
+                console.log("Resposta Recebida");
+            });
+
+            function enviar() {
+                socket.emit("Teste");
+            }
+        </script>
     </body>
 </html>

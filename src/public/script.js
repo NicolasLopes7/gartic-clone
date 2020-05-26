@@ -15,17 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
         moviment: false,
     };
 
-    const line = {
-        pos: {
-            x: 350,
-            y: 250,
-        },
-        beforePos: {
-            x: 10,
-            y: 10,
-        },
-    };
-
     const drawLine = (line) => {
         context.beginPath();
         context.moveTo(line.beforePos.x, line.beforePos.y);
@@ -54,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         pencil.beforePos = { ...pencil.pos };
 
-        setTimeout(cicle, 100);
+        setTimeout(cicle, 10);
     };
     cicle();
 });
