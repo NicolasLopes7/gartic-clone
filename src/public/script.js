@@ -18,10 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const drawLine = (line) => {
-        context.beginPath();
-        context.moveTo(line.beforePos.x, line.beforePos.y);
-        context.lineTo(line.pos.x, line.pos.y);
-        context.stroke();
+        try {
+            context.beginPath();
+            context.moveTo(line.beforePos.x, line.beforePos.y);
+            context.lineTo(line.pos.x, line.pos.y);
+            context.stroke();
+        } catch {
+            context.clearRect(0, 0, screen.width, screen.height);
+        }
     };
 
     screen.onmousedown = (event) => {
@@ -40,6 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     socket.on("draw", (line) => {
         drawLine(line);
+    });
+
+    document.addEventListener("keyup", (event) => {
+        if (event.code == "Space") {
+            socket.emit("clean");
+        }
     });
 
     const cicle = () => {
