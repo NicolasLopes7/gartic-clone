@@ -14,10 +14,7 @@ server.listen(3000, () => {
 app.use(express.static(__dirname + "/public"));
 
 io.on("connection", (socket) => {
-    console.log("Nova Conexao");
-
-    socket.on("Teste", () => {
-        console.log("Mensagem recebida");
-        io.emit("resposta");
+    socket.on("draw", (line) => {
+        io.emit("draw", line);
     });
 });

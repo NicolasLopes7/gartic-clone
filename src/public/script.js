@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const socket = io.connect();
+
     const screen = document.querySelector("#screen");
     const context = screen.getContext("2d");
 
@@ -36,9 +38,18 @@ document.addEventListener("DOMContentLoaded", () => {
         pencil.moviment = true;
     };
 
+    socket.on("draw", (line) => {
+        drawLine(line);
+    });
+
     const cicle = () => {
         if (pencil.active && pencil.moviment && pencil.beforePos) {
-            drawLine({ pos: pencil.pos, beforePos: pencil.beforePos });
+            let line = {
+                pos: pencil.pos,
+                beforePos: pencil.beforePos,
+            };
+            socket.emit("draw", line);
+
             pencil.moviment = false;
         }
         pencil.beforePos = { ...pencil.pos };
