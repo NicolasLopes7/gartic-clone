@@ -5,7 +5,7 @@
 
 ## How it works
 ## Canvas Manipulation
-### To manipulate the canvas i'm using the DOMContentLoaded event, inside this have a pencil obj, a method to drawLine, the instance and context from canvas and the connection with sockets. If you can see click in this link: [script.js](./src/public/script.js)
+#### To manipulate the canvas i'm using the DOMContentLoaded event, inside this have a pencil obj, a method to drawLine, the instance and context from canvas and the connection with sockets. If you can see click in this link: [script.js](./src/public/script.js)
 
 ## Connection with socket.io
 ### We have basically three messages:
